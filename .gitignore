@@ -21,4 +21,121 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-replay_pid*
+replay_pid*<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RapidDrop - Track Your Package</title>
+  <link rel="icon" href="https://cdn.pixabay.com/photo/2020/04/04/04/04/box-4909671_1280.jpg">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      background: #2D4059;
+    }
+    .header {
+      padding: 20px;
+      background: #fff;
+      color: #2D4059;
+      border-bottom: 5px solid #EA5455;
+    }
+    .header h1 {
+      margin-bottom: 10px;
+      color: #EA5455;
+    }
+    .header p {
+      color: #2D4059;
+    }
+    .tracker {
+      padding: 20px;
+      background: #fff;
+      color: #000;
+      margin: 20px;
+      border-radius: 5px;
+      border: 2px solid #EA5455;
+    }
+    .tracker p {
+      margin-bottom: 15px;
+    }
+    .status {
+      color: #EA5455;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    .steps ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .steps ul li {
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>RapidDrop Package Tracker</h1>
+    <p>Enter your delivery number to track your package.</p>
+  </div>
+
+  <div class="tracker">
+    <input id="trackingNumber" type="text" placeholder="Enter Tracking Number">
+    <button onclick="trackPackage()">Track</button>
+
+    <h2 id="packageId">Tracking Number: </h2>
+    <p id="status">Status: </p>
+
+    <h3>Package Information</h3>
+    <p id="sender">Sender: </p>
+    <p id="receiver">Receiver: </p>
+    <p id="address">Delivery Address: </p>
+    <p id="packageTitle">Package Title: </p>
+
+    <h3>Activity</h3>
+    <div class="steps">
+      <ul id="stepsList">
+      </ul>
+    </div>
+
+    <p id="expected">Expected delivery by: </p>
+
+    <p>Visit our website for more details: <a href="https://www.rapiddrop.com" style="color:#EA5455;" target="_blank">rapiddrop.com</a></p>
+  </div>
+
+  <script>
+    function trackPackage(){
+      const number = document.getElementById("trackingNumber").value.trim();
+
+      if(number.length == 0){
+        alert("Please enter a tracking number.");
+        return;
+      }
+
+      // Simulating delivery details for demonstration
+      document.getElementById("packageId").innerHTML = "Tracking Number: " + number;
+      document.getElementById("status").innerHTML = "Status: Out for Delivery";
+
+      document.getElementById("sender").innerHTML = "Sender: Milana Vayntrub";
+      document.getElementById("receiver").innerHTML = "Receiver: Jose Barrera";
+      document.getElementById("address").innerHTML = "Delivery Address: 5161 Pear St, Vale, Oregon 97918";
+      document.getElementById("packageTitle").innerHTML = "Package Title: Million Dollars in a Box";
+
+      document.getElementById("stepsList").innerHTML = `
+        <li>2025-06-16 04:32 - Package arrived at RapidDrop facility</li>
+        <li>2025-06-16 06:15 - Package is in delivery vehicle</li>
+        <li>2025-06-16 07:45 - Out for delivery</li>
+        <li>2025-06-16 09:30 - Delivered</li>
+      `;
+
+      document.getElementById("expected").innerHTML = "Expected delivery by: 2025-06-16, 12:00 pm";
+
+      alert("Your delivery information has been updated.");
+    }
+  </script>
+
+</body>
+</html>
